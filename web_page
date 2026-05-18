@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drug Reference Guide</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
+  <style>
+        body { font-family: 'DM Sans', sans-serif; }
+        .mono { font-family: 'Space Mono', monospace; }
+        .query-input { font-family: 'Space Mono', monospace; }
+    </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen w-full">
+  <header class="relative overflow-hidden"><img data-template-id="hero-image" loading="lazy" class="canva-image absolute inset-0 w-full h-full object-cover opacity-20">
+   <div class="relative z-10 px-6 py-12 max-w-5xl mx-auto">
+    <h1 data-template-id="page-title" class="canva-text font-bold"></h1>
+    <p data-template-id="page-subtitle" class="canva-text mt-2"></p>
+   </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-6 py-8">
+   <section data-template-id="query-section" class="canva-section rounded-xl p-6 mb-6"><label data-template-id="query-label" for="sql-input" class="canva-text block mb-2 font-medium"></label> <textarea id="sql-input" class="query-input w-full h-24 p-3 rounded-lg border border-gray-600 bg-gray-900 text-green-300 resize-none focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="SELECT * FROM drugs WHERE name LIKE '%aspirin%'"></textarea>
+    <div class="flex flex-wrap gap-2 mt-3"><button data-template-id="btn-all" class="canva-button px-3 py-1.5 rounded-md text-sm font-medium" onclick="runQuick('SELECT * FROM drugs')"></button> <button data-template-id="btn-pain" class="canva-button px-3 py-1.5 rounded-md text-sm font-medium" onclick="runQuick(`SELECT * FROM drugs WHERE uses LIKE '%pain%'`)"></button> <button data-template-id="btn-side" class="canva-button px-3 py-1.5 rounded-md text-sm font-medium" onclick="runQuick(`SELECT name, side_effects FROM drugs`)"></button> <button data-template-id="btn-run" class="canva-button px-4 py-1.5 rounded-md text-sm font-bold ml-auto" onclick="executeQuery()"><i data-lucide="play" style="width:14px;height:14px;display:inline;vertical-align:middle;"></i> Run</button>
+    </div>
+   </section>
+   <section id="results-section" class="overflow-x-auto">
+    <p data-template-id="results-placeholder" class="canva-text text-center py-8 opacity-60"></p>
+    <div id="results-table-container" class="hidden"></div>
+    <p id="error-msg" class="hidden text-red-400 font-medium py-4"></p>
+   </section>
+   <section class="mt-10">
+    <h2 data-template-id="help-title" class="canva-text font-bold mb-3"></h2>
+    <div data-template-id="help-box" class="canva-card rounded-lg p-4">
+     <pre class="mono text-sm whitespace-pre-wrap leading-relaxed text-gray-300">SELECT * FROM drugs
+SELECT name, dosage FROM drugs WHERE uses LIKE '%fever%'
+SELECT * FROM drugs WHERE name = 'Ibuprofen'
+SELECT name, side_effects FROM drugs WHERE dosage LIKE '%500%'</pre>
+    </div>
+   </section>
+  </main>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script>
+    const drugs = [
+        { name:"Aspirin", uses:"Pain relief, fever reduction, anti-inflammatory, blood thinner", dosage:"325-650mg every 4-6 hours", side_effects:"Stomach irritation, bleeding, tinnitus" },
+        { name:"Ibuprofen", uses:"Pain, fever, inflammation, arthritis", dosage:"200-400mg every 4-6 hours (max 1200mg/day OTC)", side_effects:"Nausea, stomach ulcers, kidney issues, dizziness" },
+        { name:"Acetaminophen", uses:"Pain relief, fever reduction", dosage:"500-1000mg every 4-6 hours (max 3000mg/day)", side_effects:"Liver damage (overdose), rare skin reactions" },
+        { name:"Amoxicillin", uses:"Bacterial infections, ear infections, pneumonia, UTI", dosage:"250-500mg every 8 hours", side_effects:"Diarrhea, nausea, rash, allergic reactions" },
+        { name:"Lisinopril", uses:"High blood pressure, heart failure", dosage:"10-40mg once daily", side_effects:"Dry cough, dizziness, hyperkalemia, angioedema" },
+        { name:"Metformin", uses:"Type 2 diabetes, blood sugar control", dosage:"500-1000mg twice daily", side_effects:"Nausea, diarrhea, lactic acidosis (rare), B12 deficiency" },
+        { name:"Omeprazole", uses:"Acid reflux, GERD, stomach ulcers", dosage:"20-40mg once daily before meal", side_effects:"Headache, nausea, B12 deficiency, bone fractures (long-term)" },
+        { name:"Atorvastatin", uses:"High cholesterol, cardiovascular disease prevention", dosage:"10-80mg once daily", side_effects:"Muscle pain, liver enzyme changes, digestive issues" },
+        { name:"Metoprolol", uses:"High blood pressure, angina, heart failure", dosage:"25-100mg twice daily", side_effects:"Fatigue, dizziness, cold extremities, bradycardia" },
+        { name:"Sertraline", uses:"Depression, anxiety, PTSD, OCD", dosage:"50-200mg once daily", side_effects:"Nausea, insomnia, sexual dysfunction, weight changes" }
+    ];
+
+    function executeQuery() {
+        const sql = document.getElementById('sql-input').value.trim();
+        if (!sql) return;
+        try {
+            const result = parseSql(sql);
+            renderTable(result.columns, result.rows);
+        } catch(e) {
+            showError(e.message);
+        }
+    }
+
+    function runQuick(q) {
+        document.getElementById('sql-input').value = q;
+        executeQuery();
+    }
+
+    function parseSql(sql) {
+        const s = sql.replace(/;$/, '').trim();
+        const m = s.match(/^SELECT\s+(.+?)\s+FROM\s+drugs(?:\s+WHERE\s+(.+))?$/i);
+        if (!m) throw new Error("Unsupported query. Use: SELECT columns FROM drugs [WHERE condition]");
+
+        let cols = m[1].trim() === '*' ? Object.keys(drugs[0]) : m[1].split(',').map(c => c.trim());
+        let rows = drugs;
+
+        if (m[2]) {
+            const w = m[2].trim();
+            const like = w.match(/^(\w+)\s+LIKE\s+'([^']+)'$/i);
+            const eq = w.match(/^(\w+)\s*=\s*'([^']+)'$/i);
+            if (like) {
+                const col = like[1], pat = like[2].replace(/%/g, '.*');
+                const re = new RegExp(pat, 'i');
+                rows = rows.filter(r => re.test(String(r[col] || '')));
+            } else if (eq) {
+                const col = eq[1], val = eq[2];
+                rows = rows.filter(r => String(r[col] || '').toLowerCase() === val.toLowerCase());
+            } else {
+                throw new Error("Supported WHERE: column = 'value' or column LIKE '%pattern%'");
+            }
+        }
+
+        return { columns: cols, rows: rows.map(r => cols.map(c => r[c] || '')) };
+    }
+
+    function renderTable(cols, rows) {
+        document.getElementById('error-msg').classList.add('hidden');
+        document.querySelector('[data-template-id="results-placeholder"]').classList.add('hidden');
+        const container = document.getElementById('results-table-container');
+        container.classList.remove('hidden');
+        let html = `<table class="w-full text-sm border-collapse"><thead><tr>${cols.map(c => `<th class="text-left p-3 border-b border-gray-700 text-teal-300 font-bold uppercase text-xs tracking-wide">${c}</th>`).join('')}</tr></thead><tbody>`;
+        rows.forEach((r, i) => {
+            html += `<tr class="${i%2?'bg-gray-800/40':''}">` + r.map(v => `<td class="p-3 border-b border-gray-800 text-gray-200">${v}</td>`).join('') + '</tr>';
+        });
+        if (!rows.length) html += `<tr><td colspan="${cols.length}" class="p-4 text-center text-gray-500">No results found.</td></tr>`;
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+
+    function showError(msg) {
+        document.getElementById('results-table-container').classList.add('hidden');
+        document.querySelector('[data-template-id="results-placeholder"]').classList.add('hidden');
+        const el = document.getElementById('error-msg');
+        el.textContent = '⚠ ' + msg;
+        el.classList.remove('hidden');
+    }
+
+    document.getElementById('sql-input').addEventListener('keydown', e => {
+        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); executeQuery(); }
+    });
+
+    lucide.createIcons();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fdbf62aa3672330',t:'MTc3OTExODgzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
