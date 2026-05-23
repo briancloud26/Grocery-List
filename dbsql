@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Playground</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+        body { font-family: 'Space Mono', monospace; }
+        .result-table th, .result-table td { padding: 6px 12px; border: 1px solid #334155; text-align: left; }
+    </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen p-4 md:p-8">
+  <header class="max-w-4xl mx-auto mb-6">
+   <h1 data-template-id="page-title" class="canva-text text-2xl font-bold"></h1>
+   <p data-template-id="subtitle" class="canva-text mt-1 opacity-70"></p>
+  </header>
+  <main class="max-w-4xl mx-auto space-y-4">
+   <div class="flex gap-2 flex-wrap"><button data-template-id="run-btn" class="canva-button px-4 py-2 rounded font-bold flex items-center gap-2" onclick="runSQL()"> <i data-lucide="play" style="width:16px;height:16px;"></i> </button> <button data-template-id="sample-btn" class="canva-button px-4 py-2 rounded flex items-center gap-2" onclick="loadSample()"> <i data-lucide="database" style="width:16px;height:16px;"></i> </button> <button data-template-id="clear-btn" class="canva-button px-4 py-2 rounded flex items-center gap-2" onclick="clearAll()"> <i data-lucide="trash-2" style="width:16px;height:16px;"></i> </button>
+   </div><textarea id="sql-input" rows="8" class="w-full p-4 rounded-lg border-2 border-slate-600 bg-slate-900 text-green-300 text-sm resize-y focus:outline-none focus:border-green-400" placeholder="-- Type your SQL here...
+SELECT * FROM employees;"></textarea>
+   <div id="error-box" class="hidden p-3 rounded bg-red-900/60 text-red-200 text-sm whitespace-pre-wrap"></div>
+   <div id="results" class="overflow-x-auto"></div>
+   <p data-template-id="footer-note" class="canva-text text-xs opacity-50 pt-4"></p>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script>
+        let db = null;
+
+        async function initDB() {
+            const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}` });
+            db = new SQL.Database();
+        }
+
+        initDB();
+
+        function runSQL() {
+            const sql = document.getElementById('sql-input').value.trim();
+            const errorBox = document.getElementById('error-box');
+            const results = document.getElementById('results');
+            errorBox.classList.add('hidden');
+            results.innerHTML = '';
+
+            if (!sql) return;
+            if (!db) { showError('Database not ready yet.'); return; }
+
+            try {
+                const res = db.exec(sql);
+                if (res.length === 0) {
+                    results.innerHTML = '<p class="text-green-400 text-sm">✓ Query executed successfully.</p>';
+                } else {
+                    res.forEach(r => {
+                        let html = '<table class="result-table w-full text-sm text-slate-200 mb-4"><thead><tr>';
+                        r.columns.forEach(c => html += `<th class="bg-slate-700">${esc(c)}</th>`);
+                        html += '</tr></thead><tbody>';
+                        r.values.forEach(row => {
+                            html += '<tr>';
+                            row.forEach(v => html += `<td>${esc(String(v ?? 'NULL'))}</td>`);
+                            html += '</tr>';
+                        });
+                        html += '</tbody></table>';
+                        results.innerHTML += html;
+                    });
+                }
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function loadSample() {
+            if (!db) return;
+            const sql = `CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY, name TEXT, role TEXT, salary INTEGER);
+INSERT INTO employees VALUES (1, 'Alice', 'Engineer', 95000);
+INSERT INTO employees VALUES (2, 'Bob', 'Designer', 82000);
+INSERT INTO employees VALUES (3, 'Carol', 'Manager', 110000);`;
+            document.getElementById('sql-input').value = sql;
+            runSQL();
+        }
+
+        function clearAll() {
+            if (!db) return;
+            document.getElementById('sql-input').value = '';
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('error-box').classList.add('hidden');
+        }
+
+        function showError(msg) {
+            const box = document.getElementById('error-box');
+            box.textContent = msg;
+            box.classList.remove('hidden');
+        }
+
+        function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+        document.getElementById('sql-input').addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); runSQL(); }
+        });
+
+        lucide.createIcons();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a006ea888b7cc451',t:'MTc3OTU2OTI1MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
