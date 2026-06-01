@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structured Wall Customer Guide</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#2f2a24;
+      --muted:#6f685e;
+      --cream:#f4efe7;
+      --sand:#e6ddd0;
+      --olive:#5d6b56;
+      --deep:#3e463d;
+      --line:#d8cec0;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'DM Sans', sans-serif;
+      color:var(--ink);
+      background:var(--cream);
+    }
+    .serif{font-family:'Fraunces', serif}
+    .soft-shadow{box-shadow:0 18px 50px rgba(49,43,35,.14)}
+    .nav-link{position:relative}
+    .nav-link::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-6px;
+      width:0; height:1px;
+      background:var(--ink);
+      transition:width .25s ease;
+    }
+    .nav-link:hover::after{width:100%}
+    .hero-img-wrap::before{
+      content:"";
+      position:absolute;
+      inset:18px -18px -18px 18px;
+      border:1px solid #b8ab99;
+      z-index:0;
+    }
+    .hero-img-wrap img{position:relative; z-index:1}
+    .rise{
+      animation:rise .8s ease both;
+    }
+    .rise.delay-1{animation-delay:.12s}
+    .rise.delay-2{animation-delay:.24s}
+    .rise.delay-3{animation-delay:.36s}
+    @keyframes rise{
+      from{opacity:0; transform:translateY(18px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    .style-card{
+      transition:transform .28s ease, box-shadow .28s ease;
+    }
+    .style-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 16px 35px rgba(52,45,35,.12);
+    }
+    .focus-ring:focus-visible{
+      outline:2px solid #5d6b56;
+      outline-offset:4px;
+    }
+    @media (max-width: 768px){
+      .hero-img-wrap::before{display:none}
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ <script src="/_sdk/telemetry_sdk.js"></script></head>
+ <body data-template-id="__page-root" class="w-full">
+  <header class="w-full border-b border-[#ded3c5]/80 bg-[#f4efe7]/95 backdrop-blur">
+   <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-5 flex items-center justify-between gap-6"><a href="#" class="focus-ring" aria-label="Structured Wall home">
+     <div data-template-id="brand-name" class="canva-text serif text-[24px] tracking-[-0.02em]"></div></a>
+    <nav class="hidden md:flex items-center gap-9 text-[13px] uppercase tracking-[0.18em] text-[#514b43]" aria-label="Primary navigation"><a href="#why" data-template-id="nav-link-1" class="canva-link nav-link focus-ring"></a> <a href="#stories" data-template-id="nav-link-2" class="canva-link nav-link focus-ring"></a> <a href="#styles" data-template-id="nav-link-3" class="canva-link nav-link focus-ring"></a>
+    </nav><a href="#guide" data-template-id="header-cta" class="canva-button focus-ring hidden sm:inline-flex items-center gap-2 px-5 py-3 rounded-full text-[12px] uppercase tracking-[0.16em] transition hover:opacity-90"></a>
+   </div>
+  </header>
+  <main>
+   <section class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pt-12 lg:pt-20 pb-16 lg:pb-24">
+    <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-12 lg:gap-16 items-center">
+     <div class="max-w-xl">
+      <p data-template-id="hero-eyebrow" class="canva-text rise text-[12px] uppercase tracking-[0.22em] text-[#6e7866] mb-6"></p>
+      <h1 data-template-id="hero-title" class="canva-text serif rise delay-1 leading-[1.02] tracking-[-0.045em] max-w-[620px]"></h1>
+      <p data-template-id="hero-copy" class="canva-text rise delay-2 text-[17px] leading-8 text-[#655f56] mt-7 max-w-[560px]"></p>
+      <div class="rise delay-3 mt-9 flex items-center gap-4"><a href="#guide" data-template-id="hero-button" class="canva-button focus-ring inline-flex items-center gap-3 px-6 py-4 rounded-full text-[12px] uppercase tracking-[0.16em] transition hover:translate-y-[-1px]"> <span></span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i> </a>
+      </div>
+     </div>
+     <div class="relative hero-img-wrap"><img data-template-id="hero-image" loading="lazy" class="canva-image w-full h-[540px] md:h-[640px] object-cover soft-shadow">
+      <div class="absolute z-10 left-5 md:left-[-34px] bottom-7 md:bottom-10 bg-[#f6f1e8] px-6 py-5 min-w-[180px] border border-[#d9cebf] soft-shadow">
+       <div data-template-id="hero-stat-number" class="canva-text serif leading-none"></div>
+       <div data-template-id="hero-stat-label" class="canva-text text-[11px] uppercase tracking-[0.18em] text-[#746c61] mt-2"></div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section id="why" class="border-y border-[#dbd0c1] bg-[#eee7dc]">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-20">
+     <div class="max-w-3xl mb-12">
+      <p data-template-id="benefits-eyebrow" class="canva-text text-[12px] uppercase tracking-[0.22em] text-[#77806e] mb-4"></p>
+      <h2 data-template-id="benefits-title" class="canva-text serif tracking-[-0.035em] leading-[1.08]"></h2>
+     </div>
+     <div class="grid md:grid-cols-3 gap-10 md:gap-8">
+      <article class="border-t border-[#cfc3b4] pt-6">
+       <div class="w-10 h-10 rounded-full bg-[#d9dfd3] flex items-center justify-center text-[#596452] mb-5"><i data-lucide="sparkles" class="w-5 h-5"></i>
+       </div>
+       <h3 data-template-id="benefit-1-title" class="canva-text serif tracking-[-0.02em] mb-3"></h3>
+       <p data-template-id="benefit-1-copy" class="canva-text text-[15px] leading-7 text-[#6e675f]"></p>
+      </article>
+      <article class="border-t border-[#cfc3b4] pt-6">
+       <div class="w-10 h-10 rounded-full bg-[#d9dfd3] flex items-center justify-center text-[#596452] mb-5"><i data-lucide="layers-3" class="w-5 h-5"></i>
+       </div>
+       <h3 data-template-id="benefit-2-title" class="canva-text serif tracking-[-0.02em] mb-3"></h3>
+       <p data-template-id="benefit-2-copy" class="canva-text text-[15px] leading-7 text-[#6e675f]"></p>
+      </article>
+      <article class="border-t border-[#cfc3b4] pt-6">
+       <div class="w-10 h-10 rounded-full bg-[#d9dfd3] flex items-center justify-center text-[#596452] mb-5"><i data-lucide="home" class="w-5 h-5"></i>
+       </div>
+       <h3 data-template-id="benefit-3-title" class="canva-text serif tracking-[-0.02em] mb-3"></h3>
+       <p data-template-id="benefit-3-copy" class="canva-text text-[15px] leading-7 text-[#6e675f]"></p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section id="stories" class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
+    <div class="relative min-h-[620px] overflow-hidden"><img data-template-id="testimonial-image" loading="lazy" class="canva-image absolute inset-0 w-full h-full object-cover">
+     <div class="absolute inset-0 bg-[#20241f]/35"></div>
+     <div class="relative z-10 h-full min-h-[620px] flex items-end md:items-center justify-start p-6 md:p-12 lg:p-16">
+      <div class="max-w-xl bg-[#f5efe6]/95 p-7 md:p-10 border border-white/20">
+       <p data-template-id="testimonial-eyebrow" class="canva-text text-[11px] uppercase tracking-[0.22em] text-[#73806e] mb-5"></p>
+       <blockquote data-template-id="testimonial-quote" class="canva-text serif leading-[1.16] tracking-[-0.03em]"></blockquote>
+       <div class="mt-8 pt-5 border-t border-[#d6cab9]">
+        <p data-template-id="testimonial-name" class="canva-text text-[13px] uppercase tracking-[0.16em] text-[#3f3b35]"></p>
+        <p data-template-id="testimonial-location" class="canva-text text-[13px] text-[#7a7267] mt-1"></p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section id="guide" class="border-y border-[#dbd0c1] bg-[#f7f2ea]">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-22">
+     <div class="grid lg:grid-cols-[1fr_0.85fr] gap-12 lg:gap-20 items-start">
+      <div>
+       <p data-template-id="consider-eyebrow" class="canva-text text-[12px] uppercase tracking-[0.22em] text-[#78806f] mb-4"></p>
+       <h2 data-template-id="consider-title" class="canva-text serif tracking-[-0.035em] leading-[1.08] max-w-2xl"></h2>
+       <p data-template-id="consider-copy" class="canva-text text-[16px] leading-8 text-[#6d665c] mt-6 max-w-2xl"></p>
+       <div class="mt-10 space-y-5">
+        <div class="flex gap-4 items-start border-t border-[#ddd3c5] pt-5"><span class="mt-1 w-7 h-7 rounded-full bg-[#e2e8dd] text-[#5f6c59] flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+         <p data-template-id="consider-1" class="canva-text text-[15px] leading-7 text-[#5f584f]"></p>
+        </div>
+        <div class="flex gap-4 items-start border-t border-[#ddd3c5] pt-5"><span class="mt-1 w-7 h-7 rounded-full bg-[#e2e8dd] text-[#5f6c59] flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+         <p data-template-id="consider-2" class="canva-text text-[15px] leading-7 text-[#5f584f]"></p>
+        </div>
+        <div class="flex gap-4 items-start border-t border-[#ddd3c5] pt-5"><span class="mt-1 w-7 h-7 rounded-full bg-[#e2e8dd] text-[#5f6c59] flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+         <p data-template-id="consider-3" class="canva-text text-[15px] leading-7 text-[#5f584f]"></p>
+        </div>
+       </div>
+      </div>
+      <aside class="bg-[#4a5548] p-8 md:p-10 lg:p-12 text-white mt-3">
+       <div class="w-10 h-10 border border-white/35 rounded-full flex items-center justify-center mb-8"><i data-lucide="quote" class="w-5 h-5"></i>
+       </div>
+       <p data-template-id="consider-quote" class="canva-text serif leading-[1.2] tracking-[-0.025em]"></p>
+      </aside>
+     </div>
+    </div>
+   </section>
+   <section id="styles" class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+     <div>
+      <p data-template-id="gallery-eyebrow" class="canva-text text-[12px] uppercase tracking-[0.22em] text-[#77806d] mb-4"></p>
+      <h2 data-template-id="gallery-title" class="canva-text serif tracking-[-0.035em] leading-[1.08] max-w-2xl"></h2>
+     </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+     <article class="style-card bg-[#eee7dd] border border-[#ddd1c2] p-6 min-h-[260px] flex flex-col justify-between">
+      <div class="w-full h-24 bg-[linear-gradient(90deg,#8d806e_0_16%,#d6cab9_16%_22%,#8d806e_22%_38%,#d6cab9_38%_44%,#8d806e_44%_60%,#d6cab9_60%_66%,#8d806e_66%_82%,#d6cab9_82%_88%,#8d806e_88%_100%)] mb-8"></div>
+      <div>
+       <h3 data-template-id="style-1-title" class="canva-text serif mb-3 tracking-[-0.02em]"></h3>
+       <p data-template-id="style-1-copy" class="canva-text text-[14px] leading-6 text-[#6d665e]"></p>
+      </div>
+     </article>
+     <article class="style-card bg-[#eee7dd] border border-[#ddd1c2] p-6 min-h-[260px] flex flex-col justify-between">
+      <div class="w-full h-24 bg-[linear-gradient(135deg,#b9b2a8_25%,#d8d1c7_25%_50%,#a8a096_50%_75%,#c9c0b5_75%)] mb-8"></div>
+      <div>
+       <h3 data-template-id="style-2-title" class="canva-text serif mb-3 tracking-[-0.02em]"></h3>
+       <p data-template-id="style-2-copy" class="canva-text text-[14px] leading-6 text-[#6d665e]"></p>
+      </div>
+     </article>
+     <article class="style-card bg-[#eee7dd] border border-[#ddd1c2] p-6 min-h-[260px] flex flex-col justify-between">
+      <div class="w-full h-24 bg-[radial-gradient(circle_at_30%_30%,#c4b8aa_0_10%,transparent_10%),radial-gradient(circle_at_70%_60%,#b8aa9b_0_11%,transparent_11%),#d9d0c5] mb-8"></div>
+      <div>
+       <h3 data-template-id="style-3-title" class="canva-text serif mb-3 tracking-[-0.02em]"></h3>
+       <p data-template-id="style-3-copy" class="canva-text text-[14px] leading-6 text-[#6d665e]"></p>
+      </div>
+     </article>
+    </div>
+   </section>
+   <section class="bg-[#3f493e] text-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-20 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+     <div class="max-w-3xl">
+      <h2 data-template-id="final-cta-title" class="canva-text serif tracking-[-0.035em] leading-[1.08]"></h2>
+      <p data-template-id="final-cta-copy" class="canva-text text-[16px] leading-7 text-[#d9dfd5] mt-4 max-w-2xl"></p>
+     </div><a href="#why" data-template-id="final-cta-button" class="canva-button focus-ring inline-flex items-center gap-3 self-start lg:self-auto px-6 py-4 rounded-full text-[12px] uppercase tracking-[0.16em] transition hover:opacity-90"> <span></span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i> </a>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-[#2f352f] text-white">
+   <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+    <div data-template-id="footer-brand" class="canva-text serif text-[20px]"></div>
+    <div data-template-id="footer-copy" class="canva-text text-[12px] uppercase tracking-[0.16em] text-[#cbd2c7]"></div>
+   </div>
+  </footer>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (event) => {
+          const targetId = link.getAttribute('href');
+          if (targetId && targetId.length > 1) {
+            event.preventDefault();
+            const target = document.querySelector(targetId);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a050b4cadd028df5',t:'MTc4MDM0Mjk5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
