@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en"><head><script src="/_sdk/telemetry_sdk.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive / 07</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#11130f;
+      --ink-2:#171a15;
+      --panel:#1c201a;
+      --panel-2:#22271f;
+      --cream:#efeede;
+      --muted:#a8ad9c;
+      --line:#384034;
+      --acid:#d7ff57;
+      --soft:#c8cdbb;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Libre Franklin',sans-serif;
+      color:var(--cream);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(215,255,87,.05), transparent 24%),
+        radial-gradient(circle at 80% 0%, rgba(255,255,255,.03), transparent 18%),
+        #11130f;
+    }
+
+    .mono{font-family:'Space Mono',monospace}
+    .grid-bg{
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:38px 38px;
+    }
+
+    .hero-line{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .image-frame{overflow:hidden}
+    .image-frame img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+    .collect-card{transition:transform .3s ease,border-color .3s ease,background-color .3s ease}
+    .collect-card:hover{transform:translateY(-6px);border-color:#66725b}
+    .collect-card:hover .image-frame img{transform:scale(1.045)}
+
+    .fade-up{
+      opacity:0;
+      transform:translateY(18px);
+      animation:fadeUp .8s ease forwards;
+    }
+    .d1{animation-delay:.08s}
+    .d2{animation-delay:.18s}
+    .d3{animation-delay:.28s}
+    .d4{animation-delay:.38s}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+    .vertical-rule{
+      writing-mode:vertical-rl;
+      transform:rotate(180deg);
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full min-h-screen grid-bg" style="background: rgb(17, 19, 15);">
+  <div class="w-full">
+   <header class="w-full px-5 sm:px-8 lg:px-10 py-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-5">
+     <div class="flex items-center gap-4">
+      <div data-template-id="brand-mark" class="canva-card w-12 h-12 border flex items-center justify-center" style="background: rgb(215, 255, 87); color: rgb(17, 19, 15);"><i data-lucide="box" class="w-5 h-5"></i>
+      </div>
+      <div>
+       <p data-template-id="brand-eyebrow" class="canva-text mono text-[10px] uppercase tracking-[0.22em]" style="color: rgb(143, 151, 135); font-weight: 700; font-style: normal; font-size: 10px;">private index</p>
+       <h1 data-template-id="brand-title" class="canva-text leading-none" style="color: rgb(240, 241, 229); font-weight: 800; font-style: normal; font-size: 25px;">ARCHIVE / 07</h1>
+      </div>
+     </div>
+     <p data-template-id="header-note" class="canva-text mono hidden sm:block text-[11px] uppercase tracking-[0.18em]" style="color: rgb(157, 164, 147); font-weight: 400; font-style: normal; font-size: 10px;">objects / memory / material</p>
+    </div>
+   </header>
+   <main class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-12">
+    <section class="pt-10 lg:pt-14">
+     <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-10 lg:gap-16 items-end">
+      <div class="fade-up">
+       <p data-template-id="hero-kicker" class="canva-text mono text-[11px] uppercase tracking-[0.24em] mb-5" style="color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">curated studies in permanence</p>
+       <h2 data-template-id="hero-title" class="canva-text max-w-4xl leading-[0.95]" style="color: rgb(243, 244, 232); font-weight: 800; font-style: normal; font-size: 72px; line-height: 0.95;">THE OBJECTS
+THAT STAY.</h2>
+      </div>
+      <div class="fade-up d1">
+       <p data-template-id="hero-copy" class="canva-text max-w-xl leading-7" style="color: rgb(183, 189, 169); font-weight: 400; font-style: normal; font-size: 17px; line-height: 1.7;">A private edit of forms with presence — collected not for rarity alone, but for the charge they hold in a room.</p>
+      </div>
+     </div>
+     <div class="hero-line mt-10 py-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <p data-template-id="hero-stat-1" class="canva-text mono text-[10px] uppercase tracking-[0.18em]" style="color: rgb(174, 181, 165); font-weight: 700; font-style: normal; font-size: 10px;">24 pieces</p>
+      <p data-template-id="hero-stat-2" class="canva-text mono text-[10px] uppercase tracking-[0.18em]" style="color: rgb(174, 181, 165); font-weight: 700; font-style: normal; font-size: 10px;">4 rooms</p>
+      <p data-template-id="hero-stat-3" class="canva-text mono text-[10px] uppercase tracking-[0.18em]" style="color: rgb(174, 181, 165); font-weight: 700; font-style: normal; font-size: 10px;">est. 2011</p>
+      <p data-template-id="hero-stat-4" class="canva-text mono text-[10px] uppercase tracking-[0.18em] md:text-right" style="color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">issue 07</p>
+     </div>
+     <div data-template-id="hero-section" class="canva-section mt-8 border border-[#384034] p-3 fade-up d2" style="background: rgb(22, 25, 20);">
+      <div class="relative h-[430px] lg:h-[610px] image-frame"><img data-template-id="hero-image" class="canva-image w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/32805950/pexels-photo-32805950.jpeg" alt="A modern white shelf showcasing artistic sculptures and framed pictures.">
+       <div class="absolute left-4 bottom-4"><span data-template-id="hero-label" class="canva-tag mono inline-flex px-3 py-2 text-[10px] uppercase tracking-[0.18em]" style="background: rgba(17, 19, 15, 0.91); color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">selected interior / room 01</span>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section data-template-id="spotlight-section" class="canva-section mt-16 lg:mt-24 border-t border-b border-[#384034] py-8 lg:py-12" style="background: transparent;">
+     <div class="grid lg:grid-cols-[.88fr_1.12fr] gap-8 lg:gap-14 items-stretch">
+      <div class="relative image-frame min-h-[350px] lg:min-h-[560px] fade-up"><img data-template-id="spotlight-image" class="canva-image absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/11889170/pexels-photo-11889170.jpeg" alt="Intricately designed red ceramic vase set against a warm brown backdrop.">
+       <div class="absolute top-4 left-4"><span data-template-id="spotlight-index" class="canva-tag mono inline-flex px-3 py-2 text-[10px] uppercase tracking-[0.18em]" style="background: rgba(17, 19, 15, 0.91); color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">01 / feature</span>
+       </div>
+      </div>
+      <div class="flex flex-col justify-between py-1 fade-up d1">
+       <div>
+        <p data-template-id="spotlight-kicker" class="canva-text mono text-[10px] uppercase tracking-[0.22em] mb-5" style="color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">object in focus</p>
+        <h2 data-template-id="spotlight-title" class="canva-text leading-[1] max-w-2xl" style="color: rgb(241, 243, 232); font-weight: 800; font-style: normal; font-size: 54px; line-height: 1;">RED VESSEL,
+QUIET FORCE.</h2>
+        <p data-template-id="spotlight-copy" class="canva-text mt-6 leading-7 max-w-2xl" style="color: rgb(183, 189, 169); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.7;">A form that almost resists description: severe, tactile, and strangely magnetic. Its surface carries the evidence of process without ever becoming ornamental.</p>
+       </div>
+       <div class="mt-10 pt-6 border-t border-[#384034]">
+        <p data-template-id="spotlight-meta" class="canva-text mono text-[10px] uppercase tracking-[0.16em]" style="color: rgb(156, 164, 147); font-weight: 700; font-style: normal; font-size: 10px;">stoneware / hand-thrown / c. 1970</p>
+        <div class="mt-7 flex gap-4 items-start"><i data-lucide="quote" class="w-5 h-5 shrink-0 mt-1 text-[#d7ff57]"></i>
+         <p data-template-id="spotlight-quote" class="canva-text leading-7 max-w-xl" style="color: rgb(216, 220, 205); font-weight: 400; font-style: normal; font-size: 21px; line-height: 1.5;">“Good objects do not decorate a space. They alter its temperature.”</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="mt-18 lg:mt-24">
+     <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-10 lg:gap-16">
+      <div>
+       <p data-template-id="notes-kicker" class="canva-text mono text-[10px] uppercase tracking-[0.24em] mb-4" style="color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">field notes</p>
+       <h2 data-template-id="notes-title" class="canva-text leading-[1] max-w-4xl" style="color: rgb(242, 244, 233); font-weight: 800; font-style: normal; font-size: 52px; line-height: 1;">A COLLECTION IS A WAY OF LOOKING.</h2>
+      </div>
+      <div class="lg:pt-3">
+       <p data-template-id="notes-copy" class="canva-text leading-7 max-w-2xl" style="color: rgb(184, 190, 173); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.7;">The works here are not aligned by period or provenance. They are connected by atmosphere: utility, restraint, surface, and a certain refusal to disappear into the background.</p>
+      </div>
+     </div>
+     <div class="mt-10 border-t border-[#384034]">
+      <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#384034]">
+       <article class="py-6 md:pr-6">
+        <p data-template-id="note-1-number" class="canva-text mono text-[10px] tracking-[0.2em] mb-6" style="color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">01</p>
+        <h3 data-template-id="note-1-title" class="canva-text" style="color: rgb(238, 240, 228); font-weight: 700; font-style: normal; font-size: 20px;">Found slowly</h3>
+        <p data-template-id="note-1-copy" class="canva-text mt-3 leading-6" style="color: rgb(174, 181, 164); font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.6;">Nothing here arrived all at once. The best things entered quietly, then refused to leave.</p>
+       </article>
+       <article class="py-6 md:px-6">
+        <p data-template-id="note-2-number" class="canva-text mono text-[10px] tracking-[0.2em] mb-6" style="color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">02</p>
+        <h3 data-template-id="note-2-title" class="canva-text" style="color: rgb(238, 240, 228); font-weight: 700; font-style: normal; font-size: 20px;">Chosen by tension</h3>
+        <p data-template-id="note-2-copy" class="canva-text mt-3 leading-6" style="color: rgb(174, 181, 164); font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.6;">Smooth against rough, severe against sentimental, permanence against chance.</p>
+       </article>
+       <article class="py-6 md:pl-6">
+        <p data-template-id="note-3-number" class="canva-text mono text-[10px] tracking-[0.2em] mb-6" style="color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">03</p>
+        <h3 data-template-id="note-3-title" class="canva-text" style="color: rgb(238, 240, 228); font-weight: 700; font-style: normal; font-size: 20px;">Kept in motion</h3>
+        <p data-template-id="note-3-copy" class="canva-text mt-3 leading-6" style="color: rgb(174, 181, 164); font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.6;">The archive is never finished. It is edited, reconsidered, and lived with.</p>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section class="mt-20 lg:mt-28">
+     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+       <p data-template-id="collection-kicker" class="canva-text mono text-[10px] uppercase tracking-[0.24em] mb-3" style="color: rgb(215, 255, 87); font-weight: 700; font-style: normal; font-size: 10px;">selected works</p>
+       <h2 data-template-id="collection-title" class="canva-text leading-none" style="color: rgb(242, 244, 233); font-weight: 800; font-style: normal; font-size: 42px;">CURRENT EDIT</h2>
+      </div>
+      <p data-template-id="collection-note" class="canva-text max-w-md leading-6 lg:text-right" style="color: rgb(174, 181, 164); font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.6;">Four pieces from the current rotation — distinct in use, united by presence.</p>
+     </div>
+     <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-5 mt-8">
+      <article data-template-id="item-1-card" class="canva-card collect-card border border-[#384034] bg-[#171a15] fade-up d1" style="background: rgb(23, 26, 21);">
+       <div class="image-frame h-[390px] lg:h-[520px]"><img data-template-id="item-1-image" class="canva-image w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/295885/pexels-photo-295885.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Detailed photograph of a vintage gold pocket watch showing intricate mechanics on a black background.">
+       </div>
+       <div class="p-5 sm:p-6">
+        <div class="flex items-center justify-between gap-3"><span data-template-id="item-1-category" class="canva-tag mono inline-flex px-2.5 py-1.5 text-[10px] uppercase tracking-[0.14em]" style="background: rgb(215, 255, 87); color: rgb(17, 19, 15); font-weight: 700; font-style: normal; font-size: 10px;">time / brass</span> <span data-template-id="item-1-number" class="canva-text mono text-[10px] tracking-[0.18em]" style="color: rgb(156, 164, 147); font-weight: 700; font-style: normal; font-size: 10px;">01</span>
+        </div>
+        <h3 data-template-id="item-1-title" class="canva-text mt-5 leading-tight" style="color: rgb(240, 242, 231); font-weight: 800; font-style: normal; font-size: 30px;">HUNTER WATCH</h3>
+        <p data-template-id="item-1-meta" class="canva-text mono mt-3 text-[10px] uppercase tracking-[0.14em]" style="color: rgb(158, 166, 145); font-weight: 700; font-style: normal; font-size: 10px;">engraved case / late 19th c.</p>
+        <p data-template-id="item-1-copy" class="canva-text mt-4 leading-6" style="color: rgb(183, 189, 171); font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.6;">A machine disguised as an heirloom — dense, exacting, and still visibly alive.</p>
+       </div>
+      </article>
+      <div class="grid gap-5">
+       <article data-template-id="item-2-card" class="canva-card collect-card border border-[#384034] bg-[#171a15] grid sm:grid-cols-[.95fr_1.05fr] fade-up d2" style="background: rgb(23, 26, 21);">
+        <div class="image-frame min-h-[240px]"><img data-template-id="item-2-image" class="canva-image w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/21821336/pexels-photo-21821336.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A collection of colorful vintage vinyl records arranged on a wall, creating a retro aesthetic.">
+        </div>
+        <div class="p-5">
+         <div class="flex items-center justify-between gap-3"><span data-template-id="item-2-category" class="canva-tag mono inline-flex px-2.5 py-1.5 text-[10px] uppercase tracking-[0.14em]" style="background: rgb(215, 255, 87); color: rgb(17, 19, 15); font-weight: 700; font-style: normal; font-size: 10px;">sound / color</span> <span data-template-id="item-2-number" class="canva-text mono text-[10px] tracking-[0.18em]" style="color: rgb(156, 164, 147); font-weight: 700; font-style: normal; font-size: 10px;">02</span>
+         </div>
+         <h3 data-template-id="item-2-title" class="canva-text mt-5 leading-tight" style="color: rgb(240, 242, 231); font-weight: 800; font-style: normal; font-size: 24px;">SUNDAY PRESSINGS</h3>
+         <p data-template-id="item-2-meta" class="canva-text mono mt-3 text-[10px] uppercase tracking-[0.14em]" style="color: rgb(158, 166, 145); font-weight: 700; font-style: normal; font-size: 10px;">vinyl archive / 1960—1978</p>
+         <p data-template-id="item-2-copy" class="canva-text mt-4 leading-6" style="color: rgb(183, 189, 171); font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.6;">Bright sleeves, warm static, and the ritual of choosing one side over another.</p>
+        </div>
+       </article>
+       <div class="grid sm:grid-cols-2 gap-5">
+        <article data-template-id="item-3-card" class="canva-card collect-card border border-[#384034] bg-[#171a15] fade-up d3" style="background: rgb(23, 26, 21);">
+         <div class="image-frame h-56"><img data-template-id="item-3-image" class="canva-image w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/3953354/pexels-photo-3953354.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A flatlay of vintage camera, film rolls, and photographs on a wooden table.">
+         </div>
+         <div class="p-5">
+          <div class="flex items-center justify-between gap-3"><span data-template-id="item-3-category" class="canva-tag mono inline-flex px-2.5 py-1.5 text-[10px] uppercase tracking-[0.14em]" style="background: rgb(215, 255, 87); color: rgb(17, 19, 15); font-weight: 700; font-style: normal; font-size: 10px;">image / road</span> <span data-template-id="item-3-number" class="canva-text mono text-[10px] tracking-[0.18em]" style="color: rgb(156, 164, 147); font-weight: 700; font-style: normal; font-size: 10px;">03</span>
+          </div>
+          <h3 data-template-id="item-3-title" class="canva-text mt-5 leading-tight" style="color: rgb(240, 242, 231); font-weight: 800; font-style: normal; font-size: 21px;">THE ROAD CAMERA</h3>
+          <p data-template-id="item-3-meta" class="canva-text mono mt-3 text-[10px] uppercase tracking-[0.14em]" style="color: rgb(158, 166, 145); font-weight: 700; font-style: normal; font-size: 10px;">35mm / found object</p>
+         </div>
+        </article>
+        <article data-template-id="item-4-card" class="canva-card collect-card border border-[#384034] bg-[#171a15] fade-up d4" style="background: rgb(23, 26, 21);">
+         <div class="image-frame h-56"><img data-template-id="item-4-image" class="canva-image w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/32212371/pexels-photo-32212371.jpeg" alt="A collection of handcrafted ceramic bowls displayed in an artisan pottery studio with soft lighting.">
+         </div>
+         <div class="p-5">
+          <div class="flex items-center justify-between gap-3"><span data-template-id="item-4-category" class="canva-tag mono inline-flex px-2.5 py-1.5 text-[10px] uppercase tracking-[0.14em]" style="background: rgb(215, 255, 87); color: rgb(17, 19, 15); font-weight: 700; font-style: normal; font-size: 10px;">earth / hand</span> <span data-template-id="item-4-number" class="canva-text mono text-[10px] tracking-[0.18em]" style="color: rgb(156, 164, 147); font-weight: 700; font-style: normal; font-size: 10px;">04</span>
+          </div>
+          <h3 data-template-id="item-4-title" class="canva-text mt-5 leading-tight" style="color: rgb(240, 242, 231); font-weight: 800; font-style: normal; font-size: 21px;">STUDIO FORMS</h3>
+          <p data-template-id="item-4-meta" class="canva-text mono mt-3 text-[10px] uppercase tracking-[0.14em]" style="color: rgb(158, 166, 145); font-weight: 700; font-style: normal; font-size: 10px;">ceramic / small batch</p>
+         </div>
+        </article>
+       </div>
+      </div>
+     </div>
+    </section>
+   </main>
+   <footer class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-8">
+    <div class="border-t border-[#384034] pt-5 flex items-center justify-between gap-4">
+     <p data-template-id="footer-note" class="canva-text mono text-[10px] uppercase tracking-[0.18em]" style="color: rgb(158, 166, 145); font-weight: 700; font-style: normal; font-size: 10px;">archive / 07 · assembled with intent</p><i data-lucide="asterisk" class="w-4 h-4 text-[#d7ff57]"></i>
+    </div>
+   </footer>
+  </div>
+  <script>
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0bb30d0734b115e',t:'MTc4MTQ1OTU2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body></html>
