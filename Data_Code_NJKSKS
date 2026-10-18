@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Brand – Website Template</title>
+<meta name="description" content="A clean, responsive one-page website template.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== 1. DESIGN TOKENS – edit these to re-theme the whole page ===== */
+:root {
+  --bg: #eef2f5;
+  --surface: #ffffff;
+  --ink: #14213d;
+  --muted: #55627a;
+  --accent: #2a6f97;
+  --accent-ink: #ffffff;
+  --highlight: #f2c14e;
+  --line: #d3dce5;
+  --radius: 10px;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --wrap: 1080px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1626;
+    --surface: #16213a;
+    --ink: #eaf0f7;
+    --muted: #9fb0c8;
+    --accent: #6cb4e0;
+    --accent-ink: #0e1626;
+    --line: #26344f;
+  }
+}
+
+/* ===== 2. BASE ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto; }
+section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; margin: 0 0 .6em; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 800; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 700; }
+h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+p { margin: 0 0 1em; max-width: 62ch; }
+.muted { color: var(--muted); }
+
+.btn {
+  display: inline-block; padding: .85rem 1.5rem; border-radius: var(--radius);
+  font: 500 1rem var(--font-body); text-decoration: none; border: 2px solid var(--ink);
+  transition: transform .15s ease, background .15s ease; cursor: pointer;
+}
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--surface); }
+
+/* ===== 3. HEADER ===== */
+header { border-bottom: 1px solid var(--line); }
+.nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; }
+.logo { font: 800 1.4rem var(--font-display); text-decoration: none; letter-spacing: -0.03em; }
+.nav ul { display: flex; flex-wrap: wrap; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; }
+.nav ul a:hover { color: var(--ink); }
+
+/* ===== 4. HERO ===== */
+.hero-grid { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 860px) { .hero-grid { grid-template-columns: 1.25fr 1fr; } }
+.hero p { font-size: 1.2rem; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+
+/* Palette card: shows the template's theme tokens */
+.palette { position: relative; background: var(--surface); border: 2px solid var(--ink); border-radius: var(--radius); padding: 1.4rem; box-shadow: 10px 10px 0 var(--highlight); }
+.palette h3 { font-size: 1rem; margin-bottom: 1rem; }
+.swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+.swatch { border-radius: 8px; padding: 1.8rem .8rem .6rem; font-size: .85rem; border: 1px solid var(--line); }
+.swatch:nth-child(1) { background: var(--accent); color: var(--accent-ink); }
+.swatch:nth-child(2) { background: var(--highlight); color: #14213d; }
+.swatch:nth-child(3) { background: var(--ink); color: var(--bg); }
+.swatch:nth-child(4) { background: var(--bg); }
+
+/* ===== 5. FEATURES ===== */
+.features { background: var(--surface); border-block: 1px solid var(--line); }
+.section-head { max-width: 40rem; margin-bottom: 2.5rem; }
+.feature-list { display: grid; gap: 0; }
+.feature { display: grid; gap: .4rem 2rem; padding-block: 1.6rem; border-top: 1px solid var(--line); }
+.feature:last-child { border-bottom: 1px solid var(--line); }
+.feature h3 { margin: 0; }
+.feature p { margin: 0; color: var(--muted); }
+@media (min-width: 760px) { .feature { grid-template-columns: 1fr 2fr; align-items: baseline; } }
+
+/* ===== 6. ABOUT / SPLIT ===== */
+.split { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 860px) { .split { grid-template-columns: 1fr 1fr; } }
+.image-slot {
+  aspect-ratio: 4 / 3; border-radius: var(--radius); border: 2px dashed var(--line);
+  display: grid; place-items: center; color: var(--muted); text-align: center; padding: 1rem;
+  background: repeating-linear-gradient(45deg, transparent 0 14px, color-mix(in srgb, var(--line) 45%, transparent) 14px 15px);
+}
+.stats { display: flex; flex-wrap: wrap; gap: 2.2rem; margin-top: 1.5rem; }
+.stats strong { display: block; font: 800 2rem var(--font-display); }
+.stats span { color: var(--muted); font-size: .95rem; }
+
+/* ===== 7. CONTACT ===== */
+.contact { background: var(--ink); color: var(--bg); }
+.contact .muted { color: color-mix(in srgb, var(--bg) 70%, transparent); }
+.contact-grid { display: grid; gap: 2.5rem; }
+@media (min-width: 860px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.field { display: grid; gap: .35rem; margin-bottom: 1rem; }
+label { font-weight: 500; font-size: .95rem; }
+input, textarea {
+  font: inherit; padding: .8rem 1rem; border-radius: var(--radius);
+  border: 2px solid transparent; background: var(--bg); color: #14213d; width: 100%;
+}
+@media (prefers-color-scheme: dark) { input, textarea { color: var(--ink); background: var(--surface); } .contact { background: #070d19; } }
+textarea { min-height: 8rem; resize: vertical; }
+input:focus-visible, textarea:focus-visible { outline-color: var(--highlight); }
+.contact .btn-primary { background: var(--highlight); border-color: var(--highlight); color: #14213d; }
+
+/* ===== 8. FOOTER ===== */
+footer { padding-block: 2rem; color: var(--muted); font-size: .95rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">Your Brand</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#features">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Say what you do, clearly.</h1>
+        <p>Replace this line with one plain sentence about who you help and how. Keep it short enough to read in five seconds.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="#features">See what we offer</a>
+        </div>
+      </div>
+      <aside class="palette" aria-label="Theme colors">
+        <h3>Your theme lives in :root</h3>
+        <div class="swatches">
+          <div class="swatch">--accent</div>
+          <div class="swatch">--highlight</div>
+          <div class="swatch">--ink</div>
+          <div class="swatch">--bg</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we offer</h2>
+        <p class="muted">Three short descriptions are easier to scan than ten long ones. Add or remove rows as needed.</p>
+      </div>
+      <div class="feature-list">
+        <article class="feature">
+          <h3>Service one</h3>
+          <p>Describe what the customer gets and why it matters to them, in two sentences or fewer.</p>
+        </article>
+        <article class="feature">
+          <h3>Service two</h3>
+          <p>Mention how long it takes, what it costs, or what makes it different from the alternatives.</p>
+        </article>
+        <article class="feature">
+          <h3>Service three</h3>
+          <p>End with something that builds trust, like a guarantee, a certification, or a quick turnaround.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap split">
+      <div class="image-slot" role="img" aria-label="Image placeholder">Replace with your photo<br>(use &lt;img src="…" alt="…"&gt;)</div>
+      <div>
+        <h2>About us</h2>
+        <p>Tell your story in a short paragraph. Who you are, why you started, and what you care about. Write the way you would talk to a customer in person.</p>
+        <div class="stats">
+          <div><strong>10+</strong><span>Years of experience</span></div>
+          <div><strong>250</strong><span>Projects delivered</span></div>
+          <div><strong>4.9</strong><span>Average rating</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Let’s talk</h2>
+        <p class="muted">Send a message and we’ll reply within one business day.</p>
+        <p class="muted">hello@yourbrand.com<br>(555) 010-0199</p>
+      </div>
+      <!-- Point action at your form service (Formspree, Netlify Forms, your own backend, etc.) -->
+      <form action="#" method="post">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <span>© 2026 Your Brand. All rights reserved.</span>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+</body>
+</html>
